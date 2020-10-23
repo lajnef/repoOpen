@@ -1,0 +1,7 @@
+
+L
+java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¿ƒŠðÑ.
+a
+java:S2259+"DA "NullPointerException" could be thrown; "reader" is nullable here.(°ÐãÇ8ä¦ŒðÑ.
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(»ò©Ÿúÿÿÿÿ
