@@ -1,24 +1,28 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.analytics.service;
 
-import com.hemebiotech.analytics.reader.ReadSymptomDataFromFile;
-import com.hemebiotech.analytics.writer.WriteSymptomDataToFile;
+import com.hemebiotech.analytics.reader.SymptomReaderImp;
+import com.hemebiotech.analytics.writer.SymptomWriterImp;
 
 import java.util.*;
 
-public class AnalyticsCounter {
+public class AnalyticsCounterService {
 	private String fileNameIn;
 	private String fileOutPath;
 	Map<String, Integer> map = new TreeMap<>();
 
-	public AnalyticsCounter(String fileNameIn, String fileOutPath) {
+	public AnalyticsCounterService(String fileNameIn, String fileOutPath) {
 		this.fileNameIn = fileNameIn;
 		this.fileOutPath = fileOutPath;
 	}
 
-	//Read symtom from file
+	/**
+	 * Read symtom from file
+	 * @return
+	 * @throws Exception
+	 */
 	public  List<String> readSymptoms() throws Exception {
-		ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile(this.fileNameIn);
-		return readSymptomDataFromFile.GetSymptoms();
+		SymptomReaderImp readSymptom = new SymptomReaderImp(this.fileNameIn);
+		return readSymptom.GetSymptoms();
 	}
 	public  void calculateNbreOfSymptoms(List<String> symptoms) throws Exception {
 		for (String symtom : symptoms) {
@@ -31,8 +35,8 @@ public class AnalyticsCounter {
 	}
 	//write nombre of symptoms into file
 	public  void writeSymptomsOut() throws Exception {
-		WriteSymptomDataToFile writeSymptomDataToFile = new WriteSymptomDataToFile(fileOutPath);
-		writeSymptomDataToFile.writeSymptoms(map);
+		SymptomWriterImp symptomWriter = new SymptomWriterImp(fileOutPath);
+		symptomWriter.writeSymptoms(map);
 
 	}
 }

@@ -4,22 +4,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
-/**
- * Simple brute force implementation
- *
- */
-public class WriteSymptomDataToFile implements ISymptomWriter {
+public class SymptomWriterImp implements ISymptomWriter {
 
 	private String outputFilePath;
-
-	/**
-	 *
-	 * @param outputFilePath a full or partial path to outputfile with symptom data
-	 */
-	public WriteSymptomDataToFile(String outputFilePath) {
+	public SymptomWriterImp(String outputFilePath) {
 		this.outputFilePath = outputFilePath;
 	}
 
+	/**
+	 * this method allows to read a map of symptoms
+	 * @param symptomMap a map of symptom and write data to output file
+	 * @throws IOException
+	 *
+	 */
 	@Override
 	public void writeSymptoms(Map<String, Integer> symptomMap) throws IOException {
 		FileWriter writer = new FileWriter (this.outputFilePath);
